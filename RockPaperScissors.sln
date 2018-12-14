@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7553040E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02B1B509-FD61-4A90-9DB5-922BDABA1AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors.Data.Model", "RockPaperScissors.Data.Model\RockPaperScissors.Data.Model.csproj", "{BA435A04-B942-40DF-9C79-81773A669554}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors.Data.Model", "src\RockPaperScissors.Data.Model\RockPaperScissors.Data.Model.csproj", "{BA435A04-B942-40DF-9C79-81773A669554}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors.Data.Model.Tests", "RockPaperScissors.Data.Model.Tests\RockPaperScissors.Data.Model.Tests.csproj", "{816B833D-B6FB-4360-91DC-38FED981F642}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors.Data.Model.Tests", "tests\RockPaperScissors.Data.Model.Tests\RockPaperScissors.Data.Model.Tests.csproj", "{816B833D-B6FB-4360-91DC-38FED981F642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

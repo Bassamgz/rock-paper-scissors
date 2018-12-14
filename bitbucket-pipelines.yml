@@ -5,6 +5,36 @@ options:
 pipelines:
   default:
     - step:
+        name: run and test APIs
+        caches:
+          - dotnetcore
+        script: # Modify the commands below to build your repository.
+          - export PROJECT_NAME=RockPaperScissors.API.GameService
+          - export TEST_NAME=RockPaperScissors.API.GameService.Tests
+          - dotnet restore
+          - dotnet build $PROJECT_NAME
+          - dotnet test $TEST_NAME
+    - step:
+        name: run and test Models
+        caches:
+          - dotnetcore
+        script: # Modify the commands below to build your repository.
+          - export PROJECT_NAME=RockPaperScissors.Data.Model
+          - export TEST_NAME=RockPaperScissors.Data.Model.Tests
+          - dotnet restore
+          - dotnet build $PROJECT_NAME
+          - dotnet test $TEST_NAME
+    - step:
+        name: run and test Core
+        caches:
+          - dotnetcore
+        script: # Modify the commands below to build your repository.
+          - export PROJECT_NAME=RockPaperScissors.Core.Service
+          - export TEST_NAME=RockPaperScissors.Core.Service.Tests
+          - dotnet restore
+          - dotnet build $PROJECT_NAME
+          - dotnet test $TEST_NAME
+    - step:
         name: build and publish docker image.
         services:
           - docker # enable Docker for your repository
