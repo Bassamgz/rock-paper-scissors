@@ -16,8 +16,8 @@ pipelines:
         caches:
           - dotnetcore
         script: # Modify the commands below to build your repository.
-          - export PROJECT_NAME=RockPaperScissors.API.GameService
-          - export TEST_NAME=RockPaperScissors.API.GameService.Tests
+          - export PROJECT_NAME=src/RockPaperScissors.API.GameService
+          - export TEST_NAME=tests/RockPaperScissors.API.GameService.Tests
           - dotnet restore
           - dotnet build $PROJECT_NAME
           - dotnet test $TEST_NAME
