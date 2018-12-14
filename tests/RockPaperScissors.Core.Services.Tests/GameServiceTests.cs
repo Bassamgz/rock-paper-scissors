@@ -1,14 +1,12 @@
-using System;
-using Xunit;
-
 namespace RockPaperScissors.Core.Services.Tests
 {
+    using Xunit;
+
     public class GameServiceTests
     {
         [Fact]
         public void Test1()
         {
-
         }
     }
 }
