@@ -1,10 +1,11 @@
 namespace RockPaperScissors.Core.Services
 {
     using System;
+    using RockPaperScissors.Data.Model;
     using RockPaperScissors.Data.Model.Requests;
     using RockPaperScissors.Data.Model.Responses;
 
-    public interface IGame
+    public interface IGameService
     {
         CreateGameResponse CreateGame(CreateGameRequest request);
 

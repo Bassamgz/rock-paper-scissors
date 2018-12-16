@@ -7,6 +7,8 @@
     {
         public Guid Id { get; set; }
 
+        public string Name { get; set; }
+
         public Player FirstPlayer { get; set; }
 
         public Player SecondPlayer { get; set; }

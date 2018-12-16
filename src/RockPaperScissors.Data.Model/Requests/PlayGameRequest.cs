@@ -1,11 +1,13 @@
 ﻿namespace RockPaperScissors.Data.Model.Requests
 {
-    using System;
+    using RockPaperScissors.Data.Model.Enums;
 
     public class PlayGameRequest
     {
-        public Guid GameId { get; set; }
+        public Move NextMove { get; set; }
 
-        public Player Player { get; set; }
+        public string GameName { get; set; }
+
+        public string PlayerName { get; set; }
     }
 }

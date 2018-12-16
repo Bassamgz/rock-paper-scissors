@@ -10,9 +10,15 @@ namespace RockPaperScissors.Data.Model.Tests
         private readonly Player testPlayer;
         private readonly Guid playerGuid;
         private readonly Guid gameGuid;
+        private readonly string gameName;
+        private readonly string playerName;
+        private readonly Move nextMove;
 
         public RequestTests()
         {
+            this.nextMove = Move.Empty;
+            this.gameName = "Test Game";
+            this.playerName = "Test Player";
             this.playerGuid = Guid.NewGuid();
             this.gameGuid = Guid.NewGuid();
             this.testPlayer = new Player
@@ -29,14 +35,16 @@ namespace RockPaperScissors.Data.Model.Tests
             // Arrange
             var playGameRequest = new PlayGameRequest
             {
-                Player = this.testPlayer,
-                GameId = this.gameGuid
+                GameName = this.gameName,
+                PlayerName = this.playerName,
+                NextMove = this.nextMove
             };
 
             // Act
             // Assert
-            Assert.Equal(this.gameGuid, playGameRequest.GameId);
-            Assert.Equal(this.testPlayer, playGameRequest.Player);
+            Assert.Equal(this.gameName, playGameRequest.GameName);
+            Assert.Equal(this.playerName, playGameRequest.PlayerName);
+            Assert.Equal(this.nextMove, playGameRequest.NextMove);
         }
 
         [Fact]
@@ -46,12 +54,12 @@ namespace RockPaperScissors.Data.Model.Tests
             var joinGameRequest = new JoinGameRequest()
             {
                 SecondPlayer = this.testPlayer,
-                GameId = this.gameGuid
+                GameName = this.gameName
             };
 
             // Act
             // Assert
-            Assert.Equal(this.gameGuid, joinGameRequest.GameId);
+            Assert.Equal(this.gameName, joinGameRequest.GameName);
             Assert.Equal(this.testPlayer, joinGameRequest.SecondPlayer);
         }
 
@@ -61,12 +69,12 @@ namespace RockPaperScissors.Data.Model.Tests
             // Arrange
             var createGameRequest = new CreateGameRequest
             {
-                PlayerOne = this.testPlayer
+                GameName = this.gameName
             };
 
             // Act
             // Assert
-            Assert.Equal(this.testPlayer, createGameRequest.PlayerOne);
+            Assert.Equal(this.gameName, createGameRequest.GameName);
         }
 
         [Fact]

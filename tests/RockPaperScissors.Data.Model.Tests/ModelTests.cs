@@ -8,9 +8,11 @@
     {
         private readonly Player testPlayerOne;
         private readonly Player testPlayerTwo;
+        private readonly string gameName;
 
         public ModelTests()
         {
+            this.gameName = "Test Game";
             this.testPlayerOne = new Player
             {
                 Id = Guid.NewGuid(),
@@ -33,6 +35,7 @@
             var game = new Game
             {
                 Id = Guid.NewGuid(),
+                Name = this.gameName,
                 Status = GameStatus.Created,
                 FirstPlayer = this.testPlayerOne,
                 SecondPlayer = this.testPlayerTwo
@@ -41,27 +44,7 @@
             // Act
             // Assert
             Assert.NotEqual(Guid.Empty, game.Id);
-            Assert.Equal(this.testPlayerOne, game.FirstPlayer);
-            Assert.Equal(this.testPlayerTwo, game.SecondPlayer);
-            Assert.Equal(GameStatus.Created, game.Status);
-        }
-
-        // Testing the pipe
-        [Fact]
-        public void Game_Wrong_ObjectCreated()
-        {
-            // Arrange
-            var game = new Game
-            {
-                Id = Guid.Empty,
-                Status = GameStatus.Created,
-                FirstPlayer = this.testPlayerOne,
-                SecondPlayer = this.testPlayerTwo
-            };
-
-            // Act
-            // Assert
-            Assert.NotEqual(Guid.Empty, game.Id);
+            Assert.Equal(this.gameName, game.Name);
             Assert.Equal(this.testPlayerOne, game.FirstPlayer);
             Assert.Equal(this.testPlayerTwo, game.SecondPlayer);
             Assert.Equal(GameStatus.Created, game.Status);

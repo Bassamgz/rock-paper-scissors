@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using RockPaperScissors.Core.Services;
 
     public class Startup
     {
@@ -19,6 +20,17 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // DI
+            services.AddSingleton<IGameService, GameService>();
+
+            // Versioning
+            services.AddApiVersioning(
+                o =>
+                {
+                    o.AssumeDefaultVersionWhenUnspecified = true;
+                    o.DefaultApiVersion = new ApiVersion(1, 0);
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

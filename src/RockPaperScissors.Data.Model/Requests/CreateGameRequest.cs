@@ -2,6 +2,6 @@
 {
     public class CreateGameRequest
     {
-        public Player PlayerOne { get; set; }
+        public string GameName { get; set; }
     }
 }
