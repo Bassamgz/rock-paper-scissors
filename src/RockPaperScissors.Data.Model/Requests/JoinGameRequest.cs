@@ -2,7 +2,7 @@
 {
     public class JoinGameRequest
     {
-        public Player SecondPlayer { get; set; }
+        public Player Player { get; set; }
 
         public string GameName { get; set; }
     }

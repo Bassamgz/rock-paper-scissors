@@ -19,8 +19,9 @@ namespace RockPaperScissors.API.GameService.Controllers
             this.gameService = gameService;
         }
 
+        // Get Game Status
         // GET api/games/gameId
-        [HttpGet("{id}")]
+        [HttpGet("{gameId}")]
         public ActionResult<Game> Get(Guid gameId)
         {
             var gameStatusRequest = new GameStatusRequest
@@ -40,6 +41,7 @@ namespace RockPaperScissors.API.GameService.Controllers
         // Create Game
         // Post api/games/gameName
         [HttpPost]
+        [Route("{gameName}")]
         public void Post(string gameName)
         {
             var createGameRequest = new CreateGameRequest
@@ -59,7 +61,7 @@ namespace RockPaperScissors.API.GameService.Controllers
             var joinGameRequest = new JoinGameRequest
             {
                 GameName = gameName,
-                SecondPlayer = new Player
+                Player = new Player
                 {
                     Id = Guid.NewGuid(),
                     Name = playerName,

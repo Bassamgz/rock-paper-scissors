@@ -3,8 +3,8 @@
     public enum Move
     {
         Paper,
-        Scissor,
-        Stone,
+        Scissors,
+        Rock,
         Empty
     }
 }

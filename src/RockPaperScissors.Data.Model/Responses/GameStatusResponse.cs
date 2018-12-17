@@ -7,5 +7,7 @@
         public GameStatus Status { get; set; }
 
         public ResponseError Error { get; set; }
+
+        public bool IsSuccessful { get; set; }
     }
 }

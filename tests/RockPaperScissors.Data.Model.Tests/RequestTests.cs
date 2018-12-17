@@ -53,14 +53,14 @@ namespace RockPaperScissors.Data.Model.Tests
             // Arrange
             var joinGameRequest = new JoinGameRequest()
             {
-                SecondPlayer = this.testPlayer,
+                Player = this.testPlayer,
                 GameName = this.gameName
             };
 
             // Act
             // Assert
             Assert.Equal(this.gameName, joinGameRequest.GameName);
-            Assert.Equal(this.testPlayer, joinGameRequest.SecondPlayer);
+            Assert.Equal(this.testPlayer, joinGameRequest.Player);
         }
 
         [Fact]

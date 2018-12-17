@@ -88,13 +88,15 @@
             var gameStatusResponse = new GameStatusResponse
             {
                 Status = this.gameStatus,
-                Error = this.errorOk
+                Error = this.errorOk,
+                IsSuccessful = this.isSuccessful
             };
 
             // Act
             // Assert
             Assert.Equal(this.gameStatus, gameStatusResponse.Status);
             Assert.Equal(this.errorOk, gameStatusResponse.Error);
+            Assert.Equal(this.isSuccessful, gameStatusResponse.IsSuccessful);
         }
     }
 }
