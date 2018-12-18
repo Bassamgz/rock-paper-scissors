@@ -1,11 +1,15 @@
 ﻿namespace RockPaperScissors.API.GameService
 {
+    using System.Net;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Diagnostics;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using RockPaperScissors.Core.Services;
+    using RockPaperScissors.Data.Model;
 
     public class Startup
     {
@@ -39,6 +43,29 @@
             }
 
             app.UseHttpsRedirection();
+
+            // Centralized exception handling
+            app.UseExceptionHandler(config =>
+            {
+                config.Run(async context =>
+                {
+                    context.Response.StatusCode = 500;
+                    context.Response.ContentType = "application/json";
+
+                    var error = context.Features.Get<IExceptionHandlerFeature>();
+                    if (error != null)
+                    {
+                        var ex = error.Error;
+
+                        await context.Response.WriteAsync(new ResponseError
+                        {
+                            ErrorCode = HttpStatusCode.InternalServerError,
+                            Description = ex.Message
+                        }.ToString());
+                    }
+                });
+            });
+
             app.UseMvc();
         }
     }

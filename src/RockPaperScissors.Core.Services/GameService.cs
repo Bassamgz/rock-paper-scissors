@@ -33,8 +33,8 @@
                     GameId = Guid.Empty,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -48,8 +48,8 @@
                     GameId = Guid.Empty,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.Conflict,
-                        Description = HttpStatusCode.Conflict.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -65,7 +65,8 @@
 
             return new CreateGameResponse
             {
-                GameId = game.Id
+                GameId = game.Id,
+                IsSuccessful = true
             };
         }
 
@@ -79,8 +80,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -94,8 +95,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -108,26 +109,38 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.Conflict,
-                        Description = HttpStatusCode.Conflict.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
 
             // The real joining happens now
             // First player will just join
-            if (game.FirstPlayer.Id == Guid.Empty)
+            if (game.FirstPlayer == null)
             {
                 game.FirstPlayer = request.Player;
             }
 
             // Second player is joining
-            else if (game.SecondPlayer.Id == Guid.Empty)
+            else if (game.SecondPlayer == null)
             {
                 game.SecondPlayer = request.Player;
 
                 // Set flag for the future
                 game.IsFull = true;
+            }
+            else
+            {
+                return new JoinGameResponse
+                {
+                    IsSuccessful = false,
+                    Error = new ResponseError
+                    {
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
+                    }
+                };
             }
 
             return new JoinGameResponse
@@ -140,15 +153,15 @@
         {
             // Validate request, you will never know again and again
             if (string.IsNullOrEmpty(request?.GameName) || string.IsNullOrEmpty(request?.PlayerName) ||
-                request?.NextMove != Move.Empty)
+                request?.NextMove == Move.Empty)
             {
                 return new PlayGameResponse
                 {
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -162,8 +175,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -176,8 +189,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.Conflict,
-                        Description = HttpStatusCode.Conflict.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -190,8 +203,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.Forbidden,
-                        Description = HttpStatusCode.Forbidden.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -216,8 +229,8 @@
                             IsSuccessful = false,
                             Error = new ResponseError
                             {
-                                ErrorCode = HttpStatusCode.Forbidden,
-                                Description = HttpStatusCode.Forbidden.ToString()
+                                ErrorCode = HttpStatusCode.BadRequest,
+                                Description = HttpStatusCode.BadRequest.ToString()
                             }
                         };
                 }
@@ -242,8 +255,8 @@
                             IsSuccessful = false,
                             Error = new ResponseError
                             {
-                                ErrorCode = HttpStatusCode.Forbidden,
-                                Description = HttpStatusCode.Forbidden.ToString()
+                                ErrorCode = HttpStatusCode.BadRequest,
+                                Description = HttpStatusCode.BadRequest.ToString()
                             }
                         };
                 }
@@ -265,8 +278,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }
@@ -280,8 +293,8 @@
                     IsSuccessful = false,
                     Error = new ResponseError
                     {
-                        ErrorCode = HttpStatusCode.NotFound,
-                        Description = HttpStatusCode.NotFound.ToString()
+                        ErrorCode = HttpStatusCode.BadRequest,
+                        Description = HttpStatusCode.BadRequest.ToString()
                     }
                 };
             }

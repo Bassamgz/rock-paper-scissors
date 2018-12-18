@@ -72,12 +72,14 @@
             var createGameResponse = new CreateGameResponse
             {
                 GameId = this.gameGuid,
+                IsSuccessful = this.isSuccessful,
                 Error = this.errorOk
             };
 
             // Act
             // Assert
             Assert.Equal(this.gameGuid, createGameResponse.GameId);
+            Assert.Equal(this.isSuccessful, createGameResponse.IsSuccessful);
             Assert.Equal(this.errorOk, createGameResponse.Error);
         }
 
