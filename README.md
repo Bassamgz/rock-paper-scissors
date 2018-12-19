@@ -48,10 +48,10 @@
 			PlayerOneWon =>4
 			PlayerTwoWon =>5
 ##### Testing
-	- AWS ECS.
+	- AWS ECS. 'Not working now, trying to solve a problem within my implementation'
 		- Service is already deployed to ECS and just import the postman ecs saved project and enjoy.
 	
-	- Using Play with Docker:
+	- Using Play with Docker: 'Depends on availability'
 		- Login to PWD.
 		- Add an instance.
 		- docker run -d bgdk/rock-paper-scissors:17 -p 5050:80 
@@ -61,6 +61,7 @@
 		- Start docker then run below command.
 		- docker run -d bgdk/rock-paper-scissors:17 -p 5050:80
 		- Test using postman by importing docker saved project.
+		- Or just run from VS debugger.
 	
 	- Visual Studio
 		- Just run the 'RockPaperScissors.API.GameService' in whatever mode and import postman vs saved project
