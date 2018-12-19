@@ -49,18 +49,18 @@
 			PlayerTwoWon =>5
 ##### Testing
 	- AWS ECS.
-	Service is already deployed to ECS and just import the postman ecs saved project and enjoy.
+		- Service is already deployed to ECS and just import the postman ecs saved project and enjoy.
 	
 	- Using Play with Docker:
 		- No need to install docker. Just use PWD and run a container there.
 		- Login to PWD.
 		- Add an instance.
-		- docker run -d bgdk/rock-paper-scissors:14 -p 443:8443 
+		- docker run -d bgdk/rock-paper-scissors:15 -p 5050:80 
 		- Test using postman by importing docker saved project.
 	
 	- Local Docker:
 		- Start docker then run below command.
-		- docker run -d bgdk/rock-paper-scissors:14 -p 443:8443
+		- docker run -d bgdk/rock-paper-scissors:15 -p 5050:80
 		- Test using postman by importing docker saved project.
 	
 	- Visual Studio
