@@ -42,7 +42,7 @@
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             // Centralized exception handling
             app.UseExceptionHandler(config =>
